@@ -30,8 +30,8 @@ void PrintArray(int[,] arr)
 int[,] DeleteRawColumnMinElement(int[,] arr)
 {
     int minElement = arr[0, 0];
-    int minIndex = 0;
-    int maxIndex = 0;
+    int rowIndex = 0;
+    int columnIndex = 0;
     for (int i = 0; i < arr.GetLength(0); i++)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
@@ -39,21 +39,21 @@ int[,] DeleteRawColumnMinElement(int[,] arr)
             if (arr[i, j] < minElement)
             {
                 minElement = arr[i, j];
-                minIndex = i;
-                maxIndex = j;
+                rowIndex = i;
+                columnIndex = j;
             }
         }
     }
-    Console.WriteLine($"minElement = {minElement}, minIndex = {minIndex}, maxIndex = {maxIndex}");
+    Console.WriteLine($"minElement = {minElement}, rowIndex = {rowIndex}, columnIndex = {columnIndex}");
     int[,] newArr = new int[arr.GetLength(0) - 1, arr.GetLength(1) - 1];
     int x = 0;
     int y = 0;
     for (int i = 0; i < arr.GetLength(0); i++)
     {
-        if (i == minIndex) continue;
+        if (i == rowIndex) continue;
         for (int j = 0; j < arr.GetLength(1); j++)
         {
-            if (j == maxIndex) continue;
+            if (j == columnIndex) continue;
             newArr[x, y] = arr[i, j];
             y++;
         }
@@ -71,5 +71,3 @@ PrintArray(array);
 Console.WriteLine();
 int[,] arrayWithoutRawColumn = DeleteRawColumnMinElement(array);
 PrintArray(arrayWithoutRawColumn);
-
-

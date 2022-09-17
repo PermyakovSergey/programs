@@ -79,17 +79,17 @@ int GetNumber()
 int number = GetNumber();
 Console.WriteLine($"Получилось число: {number}");
 
-// Двумерный массив
+// Генерация двумерного массива с параметрами заданными пользователем.
 double[,] GenRandomArray()
 {
     Console.Write("Enter the number of rows in the array, ");
-    int rows = CheckInputForArr();
+    int rows = CheckInputForArraySize();
     Console.Write("Enter the number of columns in the array, ");
-    int columns = CheckInputForArr();
+    int columns = CheckInputForArraySize();
     Console.Write("Enter the minimum value of elements in array: ");
-    int min = CheckInputForNumber();
+    int min = CheckInputIfNotNumber();
     Console.Write("Enter the maximum value of elements in array: ");
-    int max = CheckInputForNumber();
+    int max = CheckInputIfNotNumber();
     double[,] randomarray = new double[rows, columns];
     if (min > max) { int temp = min; min = max; max = temp; }
     if (min == max)
